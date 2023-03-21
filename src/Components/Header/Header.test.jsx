@@ -1,5 +1,5 @@
 import '@testing-library/react';
-import { queryByTestId, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Header from '.';
 

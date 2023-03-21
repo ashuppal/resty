@@ -11,7 +11,7 @@ Simple, intuitive user interface
 An output section that displays the results of the API call
 A form that allows the user to enter the URL of the API and the HTTP method to use
 
-
+![Alt text](https://github.com/ashuppal/resty/raw/state/src/assets/final.png)
 ![RESTy](./src/assets/final.png)
 
 ![UML](./src/assets/UML.png)
