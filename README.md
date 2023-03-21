@@ -14,7 +14,7 @@ A form that allows the user to enter the URL of the API and the HTTP method to u
 
 ![RESTy](./src/assets/final.png)
 
-![UML](./src/assets/uml.png)
+![UML](./src/assets/UML.png)
 
 
 [Render](https://resty-ychn.onrender.com)
