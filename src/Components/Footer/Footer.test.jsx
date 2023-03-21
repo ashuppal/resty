@@ -6,7 +6,7 @@ import Footer from '.';
 describe('renders Footer', () => {
   test('renders Footer as expected', () => {
     render(<Footer />);
-    const footerElement = screen.getByText(/Author:Ashwini Uppal/i);
+    const footerElement = screen.getByTestId('footer');
     expect(footerElement).toBeTruthy();
   }
   );

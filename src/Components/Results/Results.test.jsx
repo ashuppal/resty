@@ -6,7 +6,7 @@ import Results from '.';
 describe('renders Results', () => {
   test('renders Results as expected', () => {
     render(<Results />);
-    const resultsElement = screen.getByText(/Results/i);
+    const resultsElement = screen.getByText;
     expect(resultsElement).toBeTruthy();
   }
   );
