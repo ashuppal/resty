@@ -16,4 +16,4 @@ A form that allows the user to enter the URL of the API and the HTTP method to u
 ![UML](./src/assets/UML.png)
 
 
-[Render](https://resty-ychn.onrender.com)
+[codeSandbox](https://codesandbox.io/p/github/ashuppal/resty/state?workspaceId=298292ae-8d28-427b-b58b-990beefc264a&file=%2FREADME.md&selection=%5B%7B%22endColumn%22%3A1%2C%22endLineNumber%22%3A11%2C%22startColumn%22%3A1%2C%22startLineNumber%22%3A11%7D%5D)
