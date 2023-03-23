@@ -6,8 +6,8 @@ import Footer from '.';
 describe('renders Footer', () => {
   test('renders Footer as expected', () => {
     render(<Footer />);
-    const footerElement = screen.getByTestId('footer');
+    const footerElement = screen.getByText(/2023/i);
     expect(footerElement).toBeTruthy();
-  }
-  );
-});
+  });
+}
+);
