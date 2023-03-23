@@ -3,34 +3,60 @@ import { useState } from 'react';
 import './Form.scss';
 
 const Form = (props)=>{
-  const [method, setMethod] = useState('');
+  const [method, setMethod] = useState('get');
   const [url, setUrl] = useState('');
   const [data, setData] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    props.handleApiCall({method, url, data});
+    const formData = {
+      method,
+      url,
+      data,
+    };
+    
+    props.handleApiCall({formData});
   }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+
         <label >
+
           <span>URL: </span>
-          <input data-testid="form-url" onChange={(e) => setUrl(e.target.value)} name='url' type='text' />
-          <button type="submit">GO!</button>
+
+          <input data-testid="url-input" name='url' type='text' onChange={(e) => setUrl(e.target.value)}/>
+
+          <button data-testid="button" type="submit">GO!</button>
+
         </label>
-        <label id="textarea">
-          Post / Put Input:
-          <textarea data-testid="form-textarea" onChange={(e) => setData(e.target.value)} rows="2" cols="10"></textarea>
+
+        <label>json data (if any)
+
+          <textarea rows="4" cols="50" onChange={(e) => setData(e.target.value)}/>
+
         </label>
-        
+
         <label className="methods">
-          <span id="get" onClick={(e) => setMethod('get')}>GET</span>
-          <span id="post">POST</span>
-          <span id="put">PUT</span>
-          <span id="delete">DELETE</span>
+          <span
+            data-testid="get-span"
+            onClick={(e) => setMethod(e.target.id)}
+
+          >GET</span>
+          <span
+            data-testid="post-span"
+            onClick={(e) => setMethod(e.target.id)}
+           
+          >POST</span>
+          <span
+            onClick={(e) => setMethod(e.target.id)}
+ 
+          >PUT</span>
+          <span
+            onClick={(e) => setMethod(e.target.id)}
+
+          >DELETE</span>
         </label>
       </form>
     </>
