@@ -1,5 +1,7 @@
-import { useReducer } from 'react';
+import { useReducer,useState } from 'react';
 import './Form.scss';
+
+let history = [];
 
 export const intialState = {
   method : 'get',
@@ -20,12 +22,11 @@ export const formReducer = (state = intialState,action) =>{
   }
 }
 
-
-
-
+ 
 const Form = (props) => {
 
 const [state,dispatch] = useReducer(formReducer, intialState);
+const [history, setHistory] = useState([]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -33,15 +34,45 @@ const [state,dispatch] = useReducer(formReducer, intialState);
       method : state.method,
       url: state.url,
       data: state.data,
+
     };
+
+    if (state.url !== '') {
+      const newHistory = [...history, state.url];
+      setHistory(newHistory);
+      console.log('history url pushed: ', newHistory);
+      let item = JSON.stringify(newHistory);
+      localStorage.setItem('history', item);
+    }
+    
+
+
+    
     props.handleApiCall(formData);
   }
 
   const changeUrl = (e) => dispatch({type:'SET_URL',payload: e.target.value});
 
+  const getHistory = () => {
+    const history = JSON.parse(localStorage.getItem('history'));
+    if (history) {
+      return history.map((item, idx) => (
+        <li key={idx} onClick={() => props.handleApiCall(item)}>
+
+{/* {item.method} {item.url} {item.data} */}
+      
+          
+        </li>
+      ));
+    }
+  }
+  
+  
+        
   return (
     <>
       <form onSubmit={handleSubmit}>
+
         <label >
           <span>URL: </span>
           <input
@@ -50,10 +81,25 @@ const [state,dispatch] = useReducer(formReducer, intialState);
            onChange={changeUrl}/>
           <button data-testid="button" type="submit">GO!</button>
         </label>
+
         <label>json data (if necessary)
           <textarea rows="4" cols="50"
            onChange={(e) => dispatch({type:'SET_DATA',payload:e.target.value})}/>
         </label>
+
+        <div className="history">
+          <button id="getHistory" onClick={getHistory}>
+            <option>history</option>
+          </button>
+          <ul>
+            {history.map((item, idx) => (
+              <li key={idx} onClick={() => props.handleApiCall({ method: 'get', url: item, data: '' })}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <label className="methods">
           <span
             data-testid="get-span"
@@ -75,7 +121,10 @@ const [state,dispatch] = useReducer(formReducer, intialState);
             onClick={(e) => dispatch({type:'SET_METHOD',payload: e.target.id})}
             style={{ backgroundColor:state.method === 'delete' ? 'gray' : '#ccc' }} id="delete"
           >DELETE</span>
+
+        
         </label>
+        
       </form>
     </>
   );

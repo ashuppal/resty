@@ -11,7 +11,7 @@ Simple, intuitive user interface
 An output section that displays the results of the API call
 A form that allows the user to enter the URL of the API and the HTTP method to use
 
-![RESTy](./src/assets/lab28.png)
+![RESTy](./src/assets/lab29.png)
 
 ![UML](./src/assets/UML.png)
 
